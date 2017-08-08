@@ -30,7 +30,7 @@ package com.views
 			addChild(myPicturn);
 			myPicturn.x=100;
 			myPicturn.y=50;
-			this.setbgColor(0x000000,0.8);
+			this.setbgColor(0x000000,1);
 			TweenLite.from(this.bg,0.3,{alpha:0,delay:0.3});
 			return super.onCreate();
 		}

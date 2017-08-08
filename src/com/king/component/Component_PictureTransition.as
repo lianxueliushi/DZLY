@@ -61,9 +61,9 @@ package com.king.component
 			createMessageTip();
 			_imgContainer=new Sprite();
 			addChild(_imgContainer);
-			var ms:Sprite=getRect(_wid,_heg,0xcccccc,1);
+			/*var ms:Sprite=getRect(_wid,_heg,0xcccccc,0);
 			addChild(ms);
-			_imgContainer.mask=ms;
+			_imgContainer.mask=ms;*/
 			
 			if(_imgFileList){
 				var tempIndex:int=0;
@@ -231,14 +231,9 @@ package com.king.component
 		}
 		private function createImgUI():void
 		{
-			var tf:TextFormat=new TextFormat();
-			tf.align="center";
-			tf.size=28;
-			tf.font=new Font_WRYH().fontName;	
-			tf.color=0xffffff;
-			_img1=new ImgContainer(_wid,_heg-50,_imgFileList[_currIndex],true);
+			_img1=new ImgContainer(_wid,_heg,_imgFileList[_currIndex],true);
 			if(_imgFileList.length>1){
-				_img2=new ImgContainer(_wid,_heg-50,_imgFileList[_currIndex],true);
+				_img2=new ImgContainer(_wid,_heg,_imgFileList[_currIndex],true);
 				_imgContainer.addChild(_img2);
 				_img2.x=_wid;
 				_zdTimer.start();

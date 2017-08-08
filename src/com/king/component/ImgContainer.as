@@ -39,9 +39,9 @@ package com.king.component
 				load();
 			}
 			_bitmap=new Bitmap();
-			this.graphics.lineStyle(2,0x000000);
+			/*this.graphics.lineStyle(2,0x000000);
 			this.graphics.drawRect(-2,-2,_wid+4,_heg+4);
-			this.graphics.endFill();
+			this.graphics.endFill();*/
 		}
 		
 		public function set source($url:File):void{
@@ -74,7 +74,7 @@ package com.king.component
 			}//jpg,jpeg,png,gif,bmp
 			else if(extension=="png" || extension=="jpg" || extension=="bmp" ||extension=="jpeg" || extension=="gif"){
 				_type=TYPE_IMG;
-				if(_stretch) _loader=new ImageLoader(_source.url,{width:_wid,height:_heg,scaleMode:ScaleMode.STRETCH});
+				if(_stretch) _loader=new ImageLoader(_source.url,{width:_wid,height:_heg,scaleMode:ScaleMode.STRETCH,bgAlpha:0});
 				else _loader=new ImageLoader(_source.url);
 				(_loader as ImageLoader).autoDispose=true;
 				_loader.addEventListener(LoaderEvent.COMPLETE,imgLoaded);

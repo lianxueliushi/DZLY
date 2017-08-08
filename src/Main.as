@@ -1,12 +1,14 @@
 package
 {
-	import com.Data.BgimgData;
 	import com.king.control.FileControl;
 	import com.king.control.KingView;
 	import com.king.control.Navigator;
+	import com.king.data.BgimgData;
+	import com.king.data.PicwallData;
 	import com.king.events.NavigatorEvent;
 	import com.views.CanvaView;
 	import com.views.PicsWallView;
+	import com.views.TakePhotoView;
 	
 	import flash.display.StageDisplayState;
 	import flash.filesystem.File;
@@ -19,7 +21,7 @@ package
 		{
 			super();
 			stage.displayState=StageDisplayState.FULL_SCREEN_INTERACTIVE;
-			Data.localData=SharedObject.getLocal("xy_dzly1");
+			Data.localData=SharedObject.getLocal("xy_dzly");
 			if(Data.localData.data["pnum"]!=null){
 				Data.personNum=Data.localData.data["pnum"];
 			}else{
@@ -29,14 +31,18 @@ package
 				{
 					var str1:String=file.name.slice(0,8);
 					var str2:String=file.name.slice(0,6);
-					Data.localData.data[str1+"num"]++;
-					Data.localData.data[str2+"num"]++;
-					trace(str2+"num");
+					if(Data.localData.data["num"+str1]==null){
+						Data.localData.data["num"+str1]=0;
+					}
+					if(Data.localData.data["num"+str2]==null){
+						Data.localData.data["num"+str2]=0;
+					}
+					Data.localData.data["num"+str1]++;
+					Data.localData.data["num"+str2]++;
 				}
 				
 			}
 			Data.localData.flush();
-			trace("2017.08:"+Data.localData.data["201708num"]+Data.localData.data["pnum"]);
 			addViewByName("navigator");
 		}
 		
@@ -62,7 +68,6 @@ package
 					Navigator.getInstance().addView(view);
 					break;
 				}
-					
 				default:
 				{
 					break;

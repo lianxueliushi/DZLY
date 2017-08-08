@@ -1,7 +1,7 @@
 package com.views
 {
-	import com.Data.BgimgData;
-	import com.Data.PicwallData;
+	import com.king.data.BgimgData;
+	import com.king.data.PicwallData;
 	import com.king.component.ImgThumList;
 	import com.king.component.SkinButton;
 	import com.king.control.FileControl;

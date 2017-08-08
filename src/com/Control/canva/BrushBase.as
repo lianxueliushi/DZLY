@@ -1,6 +1,6 @@
 ﻿package com.Control.canva 
 {
-	import com.Data.PicwallData;
+	import com.king.data.PicwallData;
 	
 	import flash.geom.ColorTransform;
 	import flash.geom.Point;

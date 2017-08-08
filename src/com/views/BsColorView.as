@@ -1,7 +1,7 @@
 package com.views
 {
 	import com.Control.SelectDispatcher;
-	import com.Data.CanvasData;
+	import com.king.data.CanvasData;
 	import com.Event.SelectEvent;
 	
 	import flash.display.BitmapData;
