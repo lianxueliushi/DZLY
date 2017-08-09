@@ -43,6 +43,8 @@ package
 		protected function onImgClick(event:MyEvent):void
 		{
 			// TODO Auto-generated method stub
+			var leftBtn:UI_btnLeft=new UI_btnLeft();
+			var rightBtn:UI_btnLeft=new UI_btnLeft();
 			Navigator.getInstance().addView(new View_PreviewImg(event.data.file,event.data.fileList));
 		}
 		

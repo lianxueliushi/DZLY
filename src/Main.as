@@ -4,11 +4,9 @@ package
 	import com.king.control.KingView;
 	import com.king.control.Navigator;
 	import com.king.data.BgimgData;
-	import com.king.data.PicwallData;
 	import com.king.events.NavigatorEvent;
 	import com.views.CanvaView;
 	import com.views.PicsWallView;
-	import com.views.TakePhotoView;
 	
 	import flash.display.StageDisplayState;
 	import flash.filesystem.File;
@@ -42,10 +40,10 @@ package
 				}
 				
 			}
+			stage.color=0xcccccc;
 			Data.localData.flush();
 			addViewByName("navigator");
 		}
-		
 		override protected function addView(event:NavigatorEvent):void
 		{
 			// TODO Auto Generated method stub
