@@ -20,7 +20,5 @@ package com.king.component
 			this.mouseEnabled=false;
 			KingDispatcher.getInstance().dispatchEvent(new NavigatorEvent(NavigatorEvent.REMOVE_VIEW));
 		}
-		
-		
 	}
 }

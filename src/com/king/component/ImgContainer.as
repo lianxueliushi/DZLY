@@ -155,7 +155,6 @@ package com.king.component
 				unLoadImg()
 			}
 			_loader.url=_source.url;
-			trace(decodeURI(_source.url));
 			load();
 		}
 		public function unLoadImg():void{

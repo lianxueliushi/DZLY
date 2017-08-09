@@ -1,10 +1,10 @@
 package com.king.component
 {
 	import com.greensock.TweenLite;
-	import com.king.component.Prompt;
 	import com.king.control.KingMouseObject;
 	import com.king.control.Navigator;
 	import com.king.control.ViewObject;
+	import com.views.View_PreviewImg;
 	
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
@@ -13,9 +13,7 @@ package com.king.component
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.filesystem.File;
-	import flash.text.TextFormat;
 	import flash.utils.Timer;
-	import com.views.View_PreviewImg;
 
 	/**
 	 *图片左右切换 简单的图片轮播 
@@ -34,13 +32,12 @@ package com.king.component
 		private var _imgFileList:Array;
 		private var _currIndex:int=-1;
 		private var _message:Prompt;
-		private var _zdTimer:Timer=new Timer(3*1000,0);
-		private var _sdTimer:Timer=new Timer(8*1000,0);
+		private var _zdTimer:Timer=new Timer(10*1000,0);
+		private var _sdTimer:Timer=new Timer(20*1000,0);
 		private var _leftBtn:DisplayObject;
 		private var _rightBtn:DisplayObject;
 		private var _heg:Number;
 		private var _wid:Number;
-
 		private var mouseHandler:KingMouseObject;
 		/**
 		 * 
@@ -61,9 +58,9 @@ package com.king.component
 			createMessageTip();
 			_imgContainer=new Sprite();
 			addChild(_imgContainer);
-			/*var ms:Sprite=getRect(_wid,_heg,0xcccccc,0);
+			var ms:Sprite=getRect(_wid,_heg,0xcccccc,0);
 			addChild(ms);
-			_imgContainer.mask=ms;*/
+			_imgContainer.mask=ms;
 			
 			if(_imgFileList){
 				var tempIndex:int=0;
@@ -231,9 +228,9 @@ package com.king.component
 		}
 		private function createImgUI():void
 		{
-			_img1=new ImgContainer(_wid,_heg,_imgFileList[_currIndex],true);
+			_img1=new ImgContainer(_wid,_heg,_imgFileList[_currIndex],false);
 			if(_imgFileList.length>1){
-				_img2=new ImgContainer(_wid,_heg,_imgFileList[_currIndex],true);
+				_img2=new ImgContainer(_wid,_heg,_imgFileList[_currIndex],false);
 				_imgContainer.addChild(_img2);
 				_img2.x=_wid;
 				_zdTimer.start();

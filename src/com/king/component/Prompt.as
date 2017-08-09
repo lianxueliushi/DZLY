@@ -7,6 +7,7 @@ package com.king.component
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	
 	public class Prompt extends com.king.control.ViewObject
@@ -37,10 +38,11 @@ package com.king.component
 			
 			_biMessage=new TextField();
 			_biMessage.selectable=false;
-			_biMessage.embedFonts=false;
-			_biMessage.textColor=0xFAECE3;
+			_biMessage.embedFonts=true;
+			_biMessage.textColor=0xffffff;
 			var fm:TextFormat=new TextFormat();
-			fm.size=14;
+			fm.size=16;
+			fm.font=new Font_WRYH().fontName;
 			fm.align="center";
 			_biMessage.defaultTextFormat=fm;
 			_biMessage.text="提示信息";
@@ -61,11 +63,11 @@ package com.king.component
 		}
 		public function showMessage($str:String,$autoDispear:Boolean=false,delay:Number=2):void{
 			_biMessage.text=$str;
-			_biMessage.width=_biMessage.textWidth+5;
+			_biMessage.autoSize=TextFieldAutoSize.LEFT;
 			
 			_busyBg.graphics.clear();
 			_busyBg.graphics.beginFill(0x333333);
-			_busyBg.graphics.drawRoundRect(0,0,_biMessage.textWidth+50,_heg,5);
+			_busyBg.graphics.drawRoundRect(0,0,_biMessage.width+50,_heg,5);
 			_busyBg.graphics.endFill();
 			_biMessage.x=25;
 			_busyBg.visible=true;

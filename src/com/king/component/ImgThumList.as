@@ -77,7 +77,10 @@ package com.king.component
 			}
 			
 		}
-
+		public function clear():void{
+			_container.removeAll();
+			_tempList=[];
+		}
 		public function set gapV(value:int):void
 		{
 			_gapV = value;
