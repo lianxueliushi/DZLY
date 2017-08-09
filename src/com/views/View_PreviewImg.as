@@ -1,6 +1,7 @@
 package com.views
 {
 	import com.greensock.TweenLite;
+	import com.greensock.loading.ImageLoader;
 	import com.king.component.Component_picTransForPreview;
 	import com.king.control.KingView;
 	
@@ -30,7 +31,8 @@ package com.views
 			addChild(myPicturn);
 			myPicturn.x=100;
 			myPicturn.y=50;
-			this.setbgColor(0x000000,1);
+			
+			this.setbgColor(0x000000,0.8);
 			TweenLite.from(this.bg,0.3,{alpha:0,delay:0.3});
 			return super.onCreate();
 		}

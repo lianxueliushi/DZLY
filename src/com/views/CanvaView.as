@@ -1,11 +1,13 @@
 package com.views
 {
 	import com.Control.bitmapData.JPGEncoder;
+	import com.Control.bitmapData.PNGEncoder;
 	import com.Event.PhotoEvent;
 	import com.greensock.TweenLite;
 	import com.greensock.layout.ScaleMode;
 	import com.greensock.loading.ImageLoader;
 	import com.king.component.Alert;
+	import com.king.component.Component_picTransForPreview;
 	import com.king.control.AddTouchDrag;
 	import com.king.control.KingView;
 	import com.king.control.MyCanvas;
@@ -57,7 +59,7 @@ package com.views
 		override public function onCreate():Boolean
 		{
 			// TODO Auto Generated method stub
-			_bg=new ImageLoader("assets/bg1.png",{width:Data.stageWidth,height:Data.stageHeight,container:this,scaleMode:ScaleMode.STRETCH});
+			_bg=new ImageLoader("assets/1.jpg",{width:Data.stageWidth,height:Data.stageHeight,container:this,scaleMode:ScaleMode.STRETCH});
 			_bg.load();
 			
 			_canvasBg=new Sprite();
@@ -67,7 +69,9 @@ package com.views
 			loadImg("assets/背景1.png");
 			_canvas=new MyCanvas(PicwallData.wid,PicwallData.heg);
 			_canvasBg.addChild(_canvas);
-			_canvasBg.x=65;
+			_canvas.x=106;
+			_canvas.y=91;
+			_canvasBg.x=75;
 			_canvasBg.y=76;
 			controls=new Btns();
 			this.addChild(controls);
@@ -78,6 +82,7 @@ package com.views
 				}
 				controls.getChildAt(i).addEventListener(MouseEvent.CLICK,onControlsClick);
 			}
+			controls.des.text=Data.localData.data["pnum"]+"人次";
 			trace(controls.numChildren);
 			return super.onCreate();
 		}
@@ -157,7 +162,7 @@ package com.views
 					}
 					case "btn_lishi":
 					{
-						KingDispatcher.getInstance().dispatchEvent(new NavigatorEvent(NavigatorEvent.ADD_VIEW,"picWallView"));						
+						KingDispatcher.getInstance().dispatchEvent(new NavigatorEvent(NavigatorEvent.ADD_VIEW,"picWallView"));	
 						break;
 					}
 						
@@ -205,10 +210,10 @@ package com.views
 			TweenLite.delayedCall(0.2,saveFile,[BgimgData.saveUrl]);
 		}
 		private function saveFile($url:String):void{
-			var bmpd:BitmapData=new BitmapData(1789,944);
+			var bmpd:BitmapData=new BitmapData(1789,944,true,0x00000000);
 			bmpd.draw(_canvasBg);
-			var jpg:JPGEncoder=new JPGEncoder(80);
-			var byte:ByteArray=jpg.encode(bmpd);
+			
+			var byte:ByteArray=PNGEncoder.encode(bmpd);
 			var file:File=new File($url);
 			if(!file.exists){
 				file.createDirectory();
@@ -216,7 +221,7 @@ package com.views
 			var data:Date=new Date();
 			var riqi:String=data.fullYear+""+dateformat(data.month+1)+""+dateformat(data.date)+"_"+dateformat(data.hours)+""+dateformat(data.minutes)+""+dateformat(data.seconds);
 //			var f:File=file.resolvePath($url+"/"+data.fullYear+"年"+dateformat(data.month+1)+"月/"+dateformat(data.month+1)+"月"+dateformat(data.date)+"日/"+riqi+".jpg");
-			var f:File=file.resolvePath($url+"/"+riqi+".jpg");
+			var f:File=file.resolvePath($url+"/"+riqi+".png");
 			var stream:FileStream=new FileStream();
 			stream.open(f,FileMode.WRITE);
 			stream.writeBytes(byte);
